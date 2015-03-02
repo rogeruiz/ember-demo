@@ -1,0 +1,34 @@
+{{#if isEditing}}
+  <label for="website">Website URL</label>
+  {{input value=website placeholder="website" id="website"}}
+  <br>
+  <label for="name">Name</label>
+  {{input value=name placeholder="Name" id="name"}}
+  <br>
+  <label for="email">Email</label>
+  {{input value=email placeholder="Email" id="email"}}
+
+  <hr>
+
+  {{#if hasCustom}}
+  <label {{bind-attr for="customId"}}>{{customLabel}}</label>
+  {{input value="" placeholder=customPlaceholder id=customId}}
+  {{/if}}
+
+  {{#if errorMessage}}
+  <h4 style="color:red;">{{errorMessage}}</h4>
+  {{/if}}
+
+  <button {{action 'saveForm'}}>Save</button>
+  <button {{action 'cancelSave'}}>Cancel</button>
+{{/if}}
+
+{{#unless isEditing}}
+<h2>Output</h2>
+<ul>
+  <li>Name: {{name}}</li>
+  <li>Website: {{website}}</li>
+  <li>Email: {{email}}</li>
+</ul>
+<button {{action 'editForm'}}>Edit</button>
+{{/unless}}
